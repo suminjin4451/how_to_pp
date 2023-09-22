@@ -11,7 +11,7 @@ void main() {
 class MyApp extends StatelessWidget {
   final _goRouter = GoRouter(
     debugLogDiagnostics: true,
-    initialLocation: '/',
+    initialLocation: '/login',
     routes: [
       GoRoute(
         path: '/',
@@ -85,6 +85,47 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return DefaultScaffold(
+      body: Container(
+        child: Text(
+          "하이염",
+        ),
+      ),
+    );
+  }
+}
+
+class DefaultScaffold extends StatelessWidget {
+  final body;
+
+  const DefaultScaffold({super.key, required this.body});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Color.fromARGB(255, 25, 25, 25),
+      appBar: AppBar(
+        elevation: 12,
+        leading: IconButton(
+          icon: const Icon(Icons.menu),
+          onPressed: () {},
+        ),
+      ),
+      body: this.body,
+      bottomNavigationBar: BottomAppBar(
+        height: 40,
+        color: Theme.of(context).colorScheme.primary,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Icon(
+              Icons.home,
+              color: Colors.white,
+            ),
+            Icon(Icons.search, color: Colors.white),
+          ],
+        ),
+      ),
+    );
   }
 }
